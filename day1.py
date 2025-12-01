@@ -9,12 +9,13 @@ def get_new_position(curr, instruction):
     step = 1 if direction == "R" else -1
     for i in range(iterations):
         curr += step
+        if curr == 0:
+            total_zeros += 1
         if curr == 100:
+            total_zeros += 1
             curr = 0
-        elif curr == -1:
+        if curr == -1:
             curr = 99
-    if curr == 0:
-        total_zeros += 1
     return curr
 
 curr_num = 50
@@ -23,3 +24,5 @@ for inst in get_data('day1_data'):
     curr_num = get_new_position(curr_num, inst)
 
 print(total_zeros)
+
+# 2670, 3174, 6580
